@@ -19,3 +19,14 @@ whatsapp="https://wa.me/4915205969459?text=Здравствуйте!%20Я%20за
 telegram="https://t.me/samedova_ekaterina?text=Здравствуйте!%20Я%20заинтересован(-a)%20в%20покупке%20бокалов%20с%20вашего%20сайта!"
 instagram="https://www.instagram.com/weddingdecor.art"
 facebook="https://www.facebook.com/share/193YPBMhrv/"
+
+3:
+name="Шкатулка"
+description="Красивая шкатулка"
+price="40€"
+pictures="1"
+picurls="https://web.triworld.xyz/3z5hf76g4q3znch923muc4z97823nmzx7892nv5bz7324znv5724zmc5789vuiq3c832c5b7n3n423328c5rz734823c45rzn89r/data/img/example1.png"
+whatsapp="https://wa.me/4915205969459?text=Здравствуйте!%20Я%20заинтересован(-a)%20в%20покупке%20бокалов%20с%20вашего%20сайта!"
+telegram="https://t.me/samedova_ekaterina?text=Здравствуйте!%20Я%20заинтересован(-a)%20в%20покупке%20бокалов%20с%20вашего%20сайта!"
+instagram="https://www.instagram.com/weddingdecor.art"
+facebook="https://www.facebook.com/share/193YPBMhrv/"
