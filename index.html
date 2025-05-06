@@ -169,7 +169,7 @@
       const card = document.createElement('div');
       card.className = 'card';
 
-      const pics = data.picurls.split(';').map(p => p.includes(':') ? p.split(':')[1] : p);
+      const pics = data.picurls.split(';').map(p => p.includes('=') ? p.split('=')[1] : p);
       pics.forEach(url => {
         const img = document.createElement('img');
         img.src = url;
@@ -253,5 +253,6 @@
       applyTheme(useLight);
     })();
   </script>
+
 </body>
 </html>
