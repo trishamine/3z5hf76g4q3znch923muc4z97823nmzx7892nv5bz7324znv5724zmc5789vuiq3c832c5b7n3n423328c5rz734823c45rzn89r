@@ -1,0 +1,21 @@
+1:
+name="§cСемейный очаг"
+description="§7Из медовой вощины натурального цвета, декор §6золотой поталью§r."
+price="§c51,89 р. §760 р."
+pictures="1"
+picurls="https://web.triworld.xyz/3z5hf76g4q3znch923muc4z97823nmzx7892nv5bz7324znv5724zmc5789vuiq3c832c5b7n3n423328c5rz734823c45rzn89r/data/products/ochag.jpg"
+whatsapp="https://wa.me/79001234567"
+telegram="https://t.me/yourshop"
+instagram="https://instagram.com/yourshop"
+facebook="https://facebook.com/yourshop"
+
+2:
+name="§aБокалы обычные"
+description="§7Красивые бокалы за красивую цену"
+price="§a5€"
+pictures="3"
+picurls="1:https://web.triworld.xyz/3z5hf76g4q3znch923muc4z97823nmzx7892nv5bz7324znv5724zmc5789vuiq3c832c5b7n3n423328c5rz734823c45rzn89r/data/products/glass1.jpg;2:https://web.triworld.xyz/3z5hf76g4q3znch923muc4z97823nmzx7892nv5bz7324znv5724zmc5789vuiq3c832c5b7n3n423328c5rz734823c45rzn89r/data/products/glass2.jpg;3:https://web.triworld.xyz/3z5hf76g4q3znch923muc4z97823nmzx7892nv5bz7324znv5724zmc5789vuiq3c832c5b7n3n423328c5rz734823c45rzn89r/data/products/glass3.jpg"
+whatsapp="https://wa.me/79001234567"
+telegram="https://t.me/yourshop"
+instagram="https://instagram.com/yourshop"
+facebook="https://facebook.com/yourshop"
