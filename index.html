@@ -1,6 +1,4 @@
-<!-- Полный HTML-файл с правками -->
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,9 +31,15 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background-color: #2b2b2b;
     }
-    body.light md-top-app-bar {
+    md-top-app-bar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: #2b2b2b;
+      z-index: -1;
+    }
+    body.light md-top-app-bar::before {
       background-color: #f5f5f5;
     }
     .toolbar-content {
@@ -97,71 +101,61 @@
       width: 28px;
       height: 28px;
     }
-    .popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      display: none;
+    footer {
+      text-align: center;
+      padding: 32px 0;
     }
-    .popup-inner {
-      background: #fff;
-      color: #000;
-      border-radius: 8px;
-      padding: 20px;
-      min-width: 300px;
-    }
-    .popup-inner h3 {
-      margin-top: 0;
-    }
-    .popup-inner button {
-      display: block;
-      width: 100%;
-      margin-top: 10px;
+    footer a {
+      margin: 0 16px;
+      color: inherit;
+      text-decoration: none;
+      font-weight: 500;
     }
   </style>
 </head>
 <body>
   <md-top-app-bar>
     <div slot="title" class="toolbar-content">
-      <div class="nav-left">
-        <div class="nav-buttons">
-          <md-text-button>Бокалы</md-text-button>
-          <md-text-button>Бутылки</md-text-button>
-          <md-text-button>Аксессуары для торта</md-text-button>
-          <md-text-button>Шкатулки для колец</md-text-button>
-          <md-text-button>Коробки для конвертов</md-text-button>
-        </div>
-      </div>
+      <div class="nav-left"></div>
       <div style="display: flex; align-items: center; gap: 8px;">
-        <md-text-button onclick="location.href='https://web.triworld.xyz/about'">О нас</md-text-button>
+        <md-icon-button id="menu-button" aria-label="Меню">
+          <md-icon>menu</md-icon>
+        </md-icon-button>
         <button class="theme-toggle" onclick="toggleTheme()">
           <img id="theme-icon" src="https://web.triworld.xyz/3z5hf76g4q3znch923muc4z97823nmzx7892nv5bz7324znv5724zmc5789vuiq3c832c5b7n3n423328c5rz734823c45rzn89r/data/ui/actionbar/themeswitcher/toggle_off.svg" alt="Тема" />
         </button>
       </div>
     </div>
-  </md-top-app-bar>
-
-  <div class="content" id="product-grid"></div>
-
-  <div class="popup" id="messenger-popup">
-    <div class="popup-inner">
-      <h3>Выберите мессенджер:</h3>
-      <button onclick="openLink('whatsapp')">WhatsApp</button>
-      <button onclick="openLink('telegram')">Telegram</button>
-      <button onclick="openLink('facebook')">Facebook</button>
-      <button onclick="openLink('instagram')">Instagram</button>
-      <button onclick="closePopup()">Отмена</button>
+  </md-top-app-bar>  <md-drawer id="menu-drawer" type="modal">
+    <md-list>
+      <md-list-item onclick="closeDrawer()">X (закрыть)</md-list-item>
+      <md-subheader>|Свадьбы:|</md-subheader>
+      <md-list-item>Бокалы</md-list-item>
+      <md-list-item>Бутылки</md-list-item>
+      <md-list-item>Аксессуары для торта</md-list-item>
+      <md-list-item>Шкатулки для колец</md-list-item>
+      <md-list-item>Коробки для конвертов</md-list-item>
+      <md-subheader>|Новый год:|</md-subheader>
+      <md-list-item>Заглушка</md-list-item>
+      <md-subheader>|Разделы:|</md-subheader>
+      <md-list-item onclick="location.href='/'">Главная</md-list-item>
+      <md-list-item onclick="location.href='https://web.triworld.xyz/about'">О нас</md-list-item>
+    </md-list>
+  </md-drawer>  <div class="content" id="product-grid"></div>  <md-dialog id="messenger-popup">
+    <div slot="headline">Выберите мессенджер</div>
+    <div slot="content">
+      <md-text-button onclick="openLink('whatsapp')">WhatsApp</md-text-button>
+      <md-text-button onclick="openLink('telegram')">Telegram</md-text-button>
+      <md-text-button onclick="openLink('facebook')">Facebook</md-text-button>
+      <md-text-button onclick="openLink('instagram')">Instagram</md-text-button>
     </div>
-  </div>
-
-  <script>
+    <div slot="actions">
+      <md-text-button dialogAction="close">Отмена</md-text-button>
+    </div>
+  </md-dialog>  <footer>
+    <a href="/datenschutz">Datenschutz</a>
+    <a href="/impressum">Impressum</a>
+  </footer>  <script>
     let currentLinks = {};
 
     function parseStyledText(text) {
@@ -209,23 +203,27 @@
           instagram: data.instagram,
           facebook: data.facebook
         };
-        document.getElementById('messenger-popup').style.display = 'flex';
+        document.getElementById('messenger-popup').show();
       };
       card.appendChild(buyBtn);
 
       return card;
     }
 
-    function closePopup() {
-      document.getElementById('messenger-popup').style.display = 'none';
-    }
-
     function openLink(platform) {
       if (currentLinks[platform]) {
         window.open(currentLinks[platform], '_blank');
       }
-      closePopup();
+      document.getElementById('messenger-popup').close();
     }
+
+    function closeDrawer() {
+      document.getElementById('menu-drawer').close();
+    }
+
+    document.getElementById('menu-button').addEventListener('click', () => {
+      document.getElementById('menu-drawer').show();
+    });
 
     fetch('list.txt')
       .then(res => res.text())
@@ -261,6 +259,5 @@
       document.body.classList.toggle('light', useLight);
       applyTheme(useLight);
     })();
-  </script>
-</body>
+  </script></body>
 </html>
