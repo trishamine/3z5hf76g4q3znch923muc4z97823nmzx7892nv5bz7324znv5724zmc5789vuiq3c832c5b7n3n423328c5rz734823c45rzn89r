@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Мой Бизнес</title>
-    <link rel="icon" type="image/svg+xml" href="https://web.triworld.xyz/3z5hf76g4q3znch923muc4z97823nmzx7892nv5bz7324znv5724zmc5789vuiq3c832c5b7n3n423328c5rz734823c45rzn89r/data/ui/actionbar/icon.svg">
+    <link rel="icon" type="image/svg+xml" href="https://web.triworld.xyz/3z5hf76g4q3znch923muc4z97823nmzx7892nv5bz7324znv5724zmc5789vuiq3c832c5b7n3n423328c5rz734823c45rzn89r/data/ui/actionbar/icon.svg" />
     <script type="module" src="https://unpkg.com/@material/web/all.js?module"></script>
     <style>
       :root {
@@ -66,9 +66,26 @@
 
       md-elevated-card {
         width: 100%;
-        height: 200px;
         margin-bottom: 40px;
         display: block;
+        padding: 16px;
+      }
+
+      .product-image {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .card-content {
+        margin-top: 12px;
+      }
+
+      .card-content h2 {
+        margin: 0 0 8px;
+        font-size: 20px;
       }
 
       .theme-toggle {
@@ -108,8 +125,22 @@
     </md-top-app-bar>
 
     <div class="content">
-      <md-elevated-card id="glasses"></md-elevated-card>
-      <md-elevated-card id="bottles"></md-elevated-card>
+      <md-elevated-card id="glasses">
+        <img class="product-image" src="https://via.placeholder.com/800x200?text=%D0%91%D0%BE%D0%BA%D0%B0%D0%BB%D1%8B" alt="Бокалы" />
+        <div class="card-content">
+          <h2>Бокалы "Классика"</h2>
+          <md-filled-button>Купить</md-filled-button>
+        </div>
+      </md-elevated-card>
+
+      <md-elevated-card id="bottles">
+        <img class="product-image" src="https://via.placeholder.com/800x200?text=%D0%91%D1%83%D1%82%D1%8B%D0%BB%D0%BA%D0%B8" alt="Бутылки" />
+        <div class="card-content">
+          <h2>Свадебная бутылка</h2>
+          <md-filled-button>Купить</md-filled-button>
+        </div>
+      </md-elevated-card>
+
       <md-elevated-card id="cake"></md-elevated-card>
       <md-elevated-card id="rings"></md-elevated-card>
       <md-elevated-card id="envelopes"></md-elevated-card>
