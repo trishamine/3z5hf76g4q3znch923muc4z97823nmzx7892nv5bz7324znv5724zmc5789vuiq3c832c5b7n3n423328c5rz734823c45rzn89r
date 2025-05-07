@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,15 +45,8 @@
     .toolbar-content {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      justify-content: flex-end;
       padding: 0 16px;
-    }
-    .nav-left, .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
     }
     .content {
       padding: 24px;
@@ -97,6 +89,14 @@
       width: 28px;
       height: 28px;
     }
+    .menu-button {
+      font-size: 24px;
+      margin-left: 8px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: inherit;
+    }
     footer {
       text-align: center;
       padding: 32px 0;
@@ -110,33 +110,32 @@
   </style>
 </head>
 <body>
-  <md-top-app-bar>
+  <md-modal-drawer id="drawer">
+    <md-list>
+      <md-list-item onclick="closeDrawer()">X (закрыть)</md-list-item>
+      <md-subheader>|Свадьбы:|</md-subheader>
+      <md-list-item>Бокалы</md-list-item>
+      <md-list-item>Бутылки</md-list-item>
+      <md-list-item>Аксессуары для торта</md-list-item>
+      <md-list-item>Шкатулки для колец</md-list-item>
+      <md-list-item>Коробки для конвертов</md-list-item>
+      <md-subheader>|Разделы:|</md-subheader>
+      <md-list-item onclick="location.href='/'">Главная</md-list-item>
+      <md-list-item onclick="location.href='https://web.triworld.xyz/about'">О нас</md-list-item>
+    </md-list>
+  </md-modal-drawer>  <md-top-app-bar>
     <div slot="title" class="toolbar-content">
-      <div class="nav-left">
-        <md-text-button>Бокалы</md-text-button>
-        <md-text-button>Бутылки</md-text-button>
-        <md-text-button>Аксессуары для торта</md-text-button>
-        <md-text-button>Шкатулки для колец</md-text-button>
-        <md-text-button>Коробки для конвертов</md-text-button>
-        <md-text-button onclick="location.href='/'">Главная</md-text-button>
-        <md-text-button onclick="location.href='https://web.triworld.xyz/about'">О нас</md-text-button>
-      </div>
-      <div class="nav-right">
-        <button class="theme-toggle" onclick="toggleTheme()">
-          <img id="theme-icon" src="https://web.triworld.xyz/3z5hf76g4q3znch923muc4z97823nmzx7892nv5bz7324znv5724zmc5789vuiq3c832c5b7n3n423328c5rz734823c45rzn89r/data/ui/actionbar/themeswitcher/toggle_off.svg" alt="Тема" />
-        </button>
-      </div>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="https://web.triworld.xyz/3z5hf76g4q3znch923muc4z97823nmzx7892nv5bz7324znv5724zmc5789vuiq3c832c5b7n3n423328c5rz734823c45rzn89r/data/ui/actionbar/themeswitcher/toggle_off.svg" alt="Тема" />
+      </button>
+      <button class="menu-button" onclick="openDrawer()">
+        —<br>—<br>—
+      </button>
     </div>
-  </md-top-app-bar>
-
-  <div class="content" id="product-grid"></div>
-
-  <footer>
+  </md-top-app-bar>  <div class="content" id="product-grid"></div>  <footer>
     <a href="/datenschutz">Datenschutz</a>
     <a href="/impressum">Impressum</a>
-  </footer>
-
-  <md-dialog id="messenger-popup">
+  </footer>  <md-dialog id="messenger-popup">
     <div slot="headline">Выберите мессенджер</div>
     <div slot="content">
       <md-text-button onclick="openLink('whatsapp')">WhatsApp</md-text-button>
@@ -147,9 +146,7 @@
     <div slot="actions">
       <md-text-button dialogAction="close">Отмена</md-text-button>
     </div>
-  </md-dialog>
-
-  <script>
+  </md-dialog>  <script>
     let currentLinks = {};
 
     function parseStyledText(text) {
@@ -211,6 +208,13 @@
       document.getElementById('messenger-popup').close();
     }
 
+    function openDrawer() {
+      document.getElementById('drawer').open = true;
+    }
+    function closeDrawer() {
+      document.getElementById('drawer').open = false;
+    }
+
     fetch('list.txt')
       .then(res => res.text())
       .then(txt => {
@@ -245,6 +249,5 @@
       document.body.classList.toggle('light', useLight);
       applyTheme(useLight);
     })();
-  </script>
-</body>
+  </script></body>
 </html>
