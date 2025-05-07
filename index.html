@@ -259,10 +259,10 @@
     })();
 
     function closeDrawer() {
-      document.getElementById('drawer').close();
+      document.getElementById('drawer').open = false;
     }
     document.getElementById('menu-button').addEventListener('click', () => {
-      document.getElementById('drawer').show();
+      document.getElementById('drawer').open = true;;
     });
   </script>
 </body>
