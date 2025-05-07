@@ -50,7 +50,7 @@
       flex-wrap: wrap;
       padding: 0 16px;
     }
-    .nav-left {
+    .nav-left, .nav-right {
       display: flex;
       align-items: center;
       gap: 8px;
@@ -110,43 +110,18 @@
   </style>
 </head>
 <body>
-  <md-dialog id="messenger-popup">
-    <div slot="headline">Выберите мессенджер</div>
-    <div slot="content">
-      <md-text-button onclick="openLink('whatsapp')">WhatsApp</md-text-button>
-      <md-text-button onclick="openLink('telegram')">Telegram</md-text-button>
-      <md-text-button onclick="openLink('facebook')">Facebook</md-text-button>
-      <md-text-button onclick="openLink('instagram')">Instagram</md-text-button>
-    </div>
-    <div slot="actions">
-      <md-text-button dialogAction="close">Отмена</md-text-button>
-    </div>
-  </md-dialog>
-
-  <md-modal-drawer id="drawer">
-    <md-list>
-      <md-list-item onclick="closeDrawer()">X (закрыть)</md-list-item>
-      <md-subheader>|Свадьбы:|</md-subheader>
-      <md-list-item>Бокалы</md-list-item>
-      <md-list-item>Бутылки</md-list-item>
-      <md-list-item>Аксессуары для торта</md-list-item>
-      <md-list-item>Шкатулки для колец</md-list-item>
-      <md-list-item>Коробки для конвертов</md-list-item>
-      <md-subheader>|Новый год:|</md-subheader>
-      <md-list-item>Заглушка</md-list-item>
-      <md-subheader>|Разделы:|</md-subheader>
-      <md-list-item onclick="location.href='/'">Главная</md-list-item>
-      <md-list-item onclick="location.href='https://web.triworld.xyz/about'">О нас</md-list-item>
-    </md-list>
-  </md-modal-drawer>
-
   <md-top-app-bar>
     <div slot="title" class="toolbar-content">
-      <div class="nav-left"></div>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <md-icon-button id="menu-button" aria-label="Меню">
-          <md-icon>menu</md-icon>
-        </md-icon-button>
+      <div class="nav-left">
+        <md-text-button>Бокалы</md-text-button>
+        <md-text-button>Бутылки</md-text-button>
+        <md-text-button>Аксессуары для торта</md-text-button>
+        <md-text-button>Шкатулки для колец</md-text-button>
+        <md-text-button>Коробки для конвертов</md-text-button>
+        <md-text-button onclick="location.href='/'">Главная</md-text-button>
+        <md-text-button onclick="location.href='https://web.triworld.xyz/about'">О нас</md-text-button>
+      </div>
+      <div class="nav-right">
         <button class="theme-toggle" onclick="toggleTheme()">
           <img id="theme-icon" src="https://web.triworld.xyz/3z5hf76g4q3znch923muc4z97823nmzx7892nv5bz7324znv5724zmc5789vuiq3c832c5b7n3n423328c5rz734823c45rzn89r/data/ui/actionbar/themeswitcher/toggle_off.svg" alt="Тема" />
         </button>
@@ -160,6 +135,19 @@
     <a href="/datenschutz">Datenschutz</a>
     <a href="/impressum">Impressum</a>
   </footer>
+
+  <md-dialog id="messenger-popup">
+    <div slot="headline">Выберите мессенджер</div>
+    <div slot="content">
+      <md-text-button onclick="openLink('whatsapp')">WhatsApp</md-text-button>
+      <md-text-button onclick="openLink('telegram')">Telegram</md-text-button>
+      <md-text-button onclick="openLink('facebook')">Facebook</md-text-button>
+      <md-text-button onclick="openLink('instagram')">Instagram</md-text-button>
+    </div>
+    <div slot="actions">
+      <md-text-button dialogAction="close">Отмена</md-text-button>
+    </div>
+  </md-dialog>
 
   <script>
     let currentLinks = {};
@@ -257,13 +245,6 @@
       document.body.classList.toggle('light', useLight);
       applyTheme(useLight);
     })();
-
-    function closeDrawer() {
-      document.getElementById('drawer').open = false;
-    }
-    document.getElementById('menu-button').addEventListener('click', () => {
-      document.getElementById('drawer').open = true;;
-    });
   </script>
 </body>
 </html>
